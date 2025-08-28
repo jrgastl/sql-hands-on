@@ -12,11 +12,17 @@ WITH revenue_distribution AS (
         p.productname, 
         SUM(s.revenue) AS monthly_rev, 
         DATE_TRUNC('month', s.orderdate) AS rev_month
-    FROM subscriptions AS s
-    INNER JOIN products AS p
+    FROM 
+        subscriptions AS s
+    INNER JOIN 
+        products AS p
         ON s.productid = p.productid
-    WHERE s.orderdate BETWEEN '2022-01-01' AND '2022-12-31'
-    GROUP BY p.productname, rev_month
+    WHERE 
+        s.orderdate >= '2022-01-01' AND 
+        s.orderdate <= '2022-12-31'
+    GROUP BY 
+        p.productname, 
+        rev_month
     )
 
 SELECT
@@ -25,5 +31,7 @@ SELECT
     MAX(monthly_rev) AS max_rev,
     AVG(monthly_rev) AS avg_rev,
     STDDEV(monthly_rev) AS std_dev_rev
-FROM revenue_distribution
-GROUP BY productname;
+FROM 
+    revenue_distribution
+GROUP BY 
+    productname;
