@@ -9,8 +9,7 @@
 
 SELECT
     fel.userid,
-    SUM(CASE
-            WHEN fel.eventid = 1 
+    SUM(CASE WHEN fel.eventid = 1 
             THEN 1
             ELSE 0
         END
