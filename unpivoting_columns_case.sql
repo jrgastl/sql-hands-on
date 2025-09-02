@@ -2,6 +2,7 @@
 /*
 Calculate the percent of canceled subscriptions that reported 'Expensive' as one of their cancelations reasons
 */
+
 WITH all_cancelation_reasons AS (
     SELECT
         subscriptionid,
