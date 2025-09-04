@@ -4,22 +4,22 @@ Task: Count the number of active subscriptions that will expire in each year
 */
 
 WITH all_subscriptions AS (
-	SELECT 
-		customerid,
-		expirationdate,
-		active
-	FROM
-		subscriptionsproduct1
+							SELECT 
+								customerid,
+								expirationdate,
+								active
+							FROM
+								subscriptionsproduct1
 
-	UNION
+							UNION
 
-	SELECT
-		customerid,
-		expirationdate,
-		active
-	FROM
-		subscriptionsproduct2
-	)
+							SELECT
+								customerid,
+								expirationdate,
+								active
+							FROM
+								subscriptionsproduct2
+							)
 	
 SELECT
 	DATE_TRUNC('year', expirationdate) AS exp_year,

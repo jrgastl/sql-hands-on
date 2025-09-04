@@ -3,14 +3,14 @@
 Highlight months where revenue was up month-over-month.
 */
 WITH monthly_revenue AS(
-    SELECT
-        DATE_TRUNC('month', orderdate) AS order_month,
-        SUM(revenue) AS revenue_month
-    FROM
-        subscriptions
-    GROUP BY
-        order_month
-        )
+                        SELECT
+                            DATE_TRUNC('month', orderdate) AS order_month,
+                            SUM(revenue) AS revenue_month
+                        FROM
+                            subscriptions
+                        GROUP BY
+                            order_month
+                        )
 
 SELECT
     curr.order_month AS current_month,

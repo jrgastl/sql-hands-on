@@ -8,22 +8,22 @@ Minimum, maximum, average, and standard deviation of monthly revenue for each pr
 */
 
 WITH revenue_distribution AS (
-    SELECT
-        p.productname, 
-        SUM(s.revenue) AS monthly_rev, 
-        DATE_TRUNC('month', s.orderdate) AS rev_month
-    FROM 
-        subscriptions AS s
-    INNER JOIN 
-        products AS p
-        ON s.productid = p.productid
-    WHERE 
-        s.orderdate >= '2022-01-01' AND 
-        s.orderdate <= '2022-12-31'
-    GROUP BY 
-        p.productname, 
-        rev_month
-    )
+                            SELECT
+                                p.productname, 
+                                SUM(s.revenue) AS monthly_rev, 
+                                DATE_TRUNC('month', s.orderdate) AS rev_month
+                            FROM 
+                                subscriptions AS s
+                            INNER JOIN 
+                                products AS p
+                                ON s.productid = p.productid
+                            WHERE 
+                                s.orderdate >= '2022-01-01' AND 
+                                s.orderdate <= '2022-12-31'
+                            GROUP BY 
+                                p.productname, 
+                                rev_month
+                            )
 
 SELECT
     productname, 

@@ -6,16 +6,16 @@
 
 -- CTE creation to aggregate number of successfully click events per user
 WITH clicksperuser AS (
-    SELECT 
-        userid,
-        count(eventid) AS num_link_clicks
-    FROM
-        frontendeventlog
-    WHERE 
-        eventid = 5
-    GROUP BY 
-        userid
-    )
+                        SELECT 
+                            userid,
+                            count(eventid) AS num_link_clicks
+                        FROM
+                            frontendeventlog
+                        WHERE 
+                            eventid = 5
+                        GROUP BY 
+                            userid
+                        )
 
 -- Query on the CTE to aggregate number of users per number of clicks
 SELECT 

@@ -9,34 +9,40 @@
 
 SELECT
     fel.userid,
-    SUM(CASE WHEN fel.eventid = 1 
+    SUM(
+        CASE 
+            WHEN fel.eventid = 1 
             THEN 1
             ELSE 0
         END
-        ) AS viewedhelpcenterpage,
-    SUM(CASE
+    ) AS viewedhelpcenterpage,
+    SUM(
+        CASE
             WHEN fel.eventid = 2 
             THEN 1
             ELSE 0
         END
-        ) AS clickedfaqs,
-    SUM(CASE
+    ) AS clickedfaqs,
+    SUM(
+        CASE
             WHEN fel.eventid = 3 
             THEN 1
             ELSE 0
         END
-        ) AS clickedcontactsupport,
-    SUM(CASE
+    ) AS clickedcontactsupport,
+    SUM(
+        CASE
             WHEN fel.eventid = 4
             THEN 1
             ELSE 0
         END
-        ) AS submittedticket
+    ) AS submittedticket
 FROM
     frontendeventlog AS fel
 JOIN
     frontendeventdefinitions AS fed
-    ON fel.eventid = fed.eventid
+    ON 
+        el.eventid = fed.eventid
 WHERE
     fed.eventtype = 'Customer Support'
 GROUP BY
