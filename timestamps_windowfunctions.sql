@@ -18,4 +18,4 @@ SELECT
 FROM
     paymentstatuslog
 WHERE
-    subscriptionid = 38844
+    subscriptionid = '38844'
