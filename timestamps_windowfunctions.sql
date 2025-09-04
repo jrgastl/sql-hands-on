@@ -7,11 +7,11 @@ SELECT
     subscriptionid,
     statusid,
     movementdate,
-    LEAD(movementdate) OVER (
+    LEAD(movementdate, 1) OVER (
                             PARTITION BY subscriptionid
                             ORDER BY movementdate
     ) AS nextstatusmovementdate,
-    LEAD(movementdate) OVER (
+    LEAD(movementdate, 1) OVER (
                             PARTITION BY subscriptionid
                             ORDER BY movementdate
     ) - movementdate AS timeinstatus
