@@ -10,7 +10,7 @@ This is my repository to document the process of advancing my skills in SQL. It 
 
 ### 1. SQL Hands-On Practice: Solve Business Problems  
 
-Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_sql_hands_on_1].  
+Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_sql_business_problems].  
   
 |Challenge|File|Description|Brief summary of skills learned|
 |-|-|-|-|
@@ -20,12 +20,14 @@ Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_
 |4|binary_columns_case.sql|Use CASE expression to flag relevant data in a binary form|CASE expression|
 |5|aggregated_columns_case.sql|Use CASE expression to pivot a table|CASE expression|
 |6|combine_tables_union.sql|Combine rows of multiple tables with UNION set operator|UNION operator|
-|7|unpivoting_columns_case.sql|Get the date of multiple columns in one column with UNION|UNION operator, CAST function|
+|7|unpivoting_columns_union.sql|Get the date of multiple columns in one column with UNION|UNION operator, CAST function|
 |8|hierarchy_data_selfjoin.sql|Join a table to itself in order to stablish hierarchical relashionships|JOIN operator|
+|9|comparing_rows_selfjoin.sql|Join a table to itself to compare data|JOIN operator|
+|10|runningtotals_windowfunctions.sql|Calculating running totals using window functions|window functions|
 
 
 
 [url_learning_path]:https://www.linkedin.com/learning/paths/advance-your-skills-in-sql
 [email]:mailto:jrgastl@gmail.com
 [url_profile]:https://www.linkedin.com/in/ricardogastl/
-[url_sql_hands_on_1]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
+[url_sql_business_problems]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
