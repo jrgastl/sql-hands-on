@@ -3,6 +3,7 @@
 Task: Count the number of active subscriptions that will expire in each year
 */
 
+-- Create a CTE to combine the tables.
 WITH all_subscriptions AS (
 							SELECT 
 								customerid,
@@ -20,7 +21,8 @@ WITH all_subscriptions AS (
 							FROM
 								subscriptionsproduct2
 							)
-	
+
+-- Then filter the CTE to get the total of active subscriptions.
 SELECT
 	DATE_TRUNC('year', expirationdate) AS exp_year,
 	COUNT(*) AS subscriptions

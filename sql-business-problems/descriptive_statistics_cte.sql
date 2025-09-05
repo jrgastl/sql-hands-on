@@ -7,6 +7,7 @@
 Minimum, maximum, average, and standard deviation of monthly revenue for each product for year 2022
 */
 
+-- Create a CTE to aggregate the revenue data by month and filter it by a period of time.
 WITH revenue_distribution AS (
                             SELECT
                                 p.productname, 
@@ -25,6 +26,7 @@ WITH revenue_distribution AS (
                                 rev_month
                             )
 
+-- Further aggregate the data to get maximum, minimum, average and standard deviation information.
 SELECT
     productname, 
     MIN(monthly_rev) AS min_rev,

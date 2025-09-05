@@ -3,6 +3,11 @@
 Create an e-mail list of the sales department to report to managers or to the employee themself if they don't have e-mail.
 */
 
+/*
+Self join the table with employee data in the hierarchical relationship field (managerid) and then select either manager
+or employee e-mail in case of no manager available.
+*/
+
 SELECT
     employees.employeeid AS employeeid,
     employees.name AS employee_name,

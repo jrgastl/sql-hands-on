@@ -1,7 +1,9 @@
 -- SQL request(s)​​​​​​‌‌‌​​​‌​​​‌​​​‌‌‌​​​‌​​​​ below
 /*
-Calculate the running total of sales revenue and the percentage of quoata achieved by each sales employee on each date they make a sales.
+Calculate the running total of sales revenue and the percentage of quota achieved by each sales employee on each date they make a sales.
 */
+
+-- Get the running totals by combining SUM function with window functions (necessarily including ORDER BY) and calculate the percentage.
 SELECT
     s.salesemployeeid,
     s.saledate,

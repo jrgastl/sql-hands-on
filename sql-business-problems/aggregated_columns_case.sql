@@ -7,6 +7,7 @@
     SubmittedTicket (eventid=4)
 */
 
+-- First join the two tables, then combine SUM function with CASE expression to get the number of times each event happened.
 SELECT
     fel.userid,
     SUM(

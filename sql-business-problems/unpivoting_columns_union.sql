@@ -3,6 +3,7 @@
 Calculate the percent of canceled subscriptions that reported 'Expensive' as one of their cancelations reasons
 */
 
+-- Get the values of three columns into one in a CTE.
 WITH all_cancelation_reasons AS (
                                 SELECT
                                     subscriptionid,
@@ -33,6 +34,7 @@ WITH all_cancelation_reasons AS (
                                     cancelationreason3 IS NOT NULL
                                 )
 
+-- Calculate the percentage that gives 'Expensive' as a cancelation reason.
 SELECT
     CAST(
         SUM(

@@ -2,6 +2,8 @@
 /*
 Highlight months where revenue was up month-over-month.
 */
+
+-- Create a CTE to aggregate the revenue by month.
 WITH monthly_revenue AS(
                         SELECT
                             DATE_TRUNC('month', orderdate) AS order_month,
@@ -12,6 +14,7 @@ WITH monthly_revenue AS(
                             order_month
                         )
 
+-- Create a self join to compare the data between months and get the month-over-month growth events.
 SELECT
     curr.order_month AS current_month,
     prev.order_month AS previous_month,
