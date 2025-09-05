@@ -8,15 +8,24 @@ This is my repository to document the process of advancing my skills in SQL. It 
 
 ## List of Challenges
 
+### 1. SQL Hands-On Practice: Solve Business Problems  
+
+Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_sql_hands_on_1].  
+  
 |Challenge|File|Description|Brief summary of skills learned|
 |-|-|-|-|
-|1|descriptive_statistics_cte.sql|Use CTE and aggregate functions to undersand the revenue of a subscription service|aggreagate fucntions combined with CTE|
-|2|variable_distributions_cte.sql|Use CTE and aggregate functions to get the distribution of users across the number of times they clicked a link|aggreagate fucntions combined with CTE|f
-|3|funnel_analysis_cte.sql|Use CTE, CASE and aggregate functions to do a payment funnel analysis|aggregate functions combine with CTE, CASE function|
-|4|
+|1|descriptive_statistics_cte.sql|Use CTE and aggregate functions to properly aggregate data|aggreagate fucntions combined with CTE|
+|2|variable_distributions_cte.sql|Use CTE and aggregate functions to get data distribution|aggreagate fucntions combined with CTE|
+|3|funnel_analysis_cte.sql|Use CTE, CASE expression and aggregate functions to do a payment funnel analysis|aggregate functions combine with CTE, CASE expression|
+|4|binary_columns_case.sql|Use CASE expression to flag relevant data in a binary form|CASE expression|
+|5|aggregated_columns_case.sql|Use CASE expression to pivot a table|CASE expression|
+|6|combine_tables_union.sql|Combine rows of multiple tables with UNION set operator|UNION operator|
+|7|unpivoting_columns_case.sql|Get the date of multiple columns in one column with UNION|UNION operator, CAST function|
+|8|hierarchy_data_selfjoin.sql|Join a table to itself in order to stablish hierarchical relashionships|JOIN operator|
 
 
 
 [url_learning_path]:https://www.linkedin.com/learning/paths/advance-your-skills-in-sql
 [email]:mailto:jrgastl@gmail.com
 [url_profile]:https://www.linkedin.com/in/ricardogastl/
+[url_sql_hands_on_1]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
