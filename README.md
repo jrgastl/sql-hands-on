@@ -23,8 +23,28 @@ Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_
 |7|unpivoting_columns_union.sql|Get the date of multiple columns in one column with UNION|UNION operator, CAST function|
 |8|hierarchy_data_selfjoin.sql|Join a table to itself in order to stablish hierarchical relashionships|JOIN operator|
 |9|comparing_rows_selfjoin.sql|Join a table to itself to compare data|JOIN operator|
-|10|runningtotals_windowfunctions.sql|Calculating running totals using window functions|window functions|
+|10|runningtotals_windowfunctions.sql|Calculate running totals using window functions|window functions|
+|11|timestamps_windowfunctions.sql|Calculate duration between instances with window functions|window functions, LEAD function|  
 
+# Folder Structure
+
+```
+sql-hands-on
+└── sql-business-problems
+    ├── descriptive_statistics_cte.sql              #Challenge 1
+    ├── variable_distributions_cte.sql              #Challenge 2
+    ├── funnel_analysis_cte.sql                     #Challenge 3
+    ├── binary_columns_case.sql                     #Challenge 4
+    ├── aggregated_columns_case.sql                 #Challenge 5
+    ├── combine_tables_union.sql                    #Challenge 6
+    ├── unpivoting_columns_union.sql                #Challenge 7
+    ├── hierarchy_data_selfjoin.sql                 #Challenge 8
+    ├── comparing_rows_selfjoin.sql                 #Challenge 9
+    ├── runningtotals_windowfunctions.sql           #Challenge 10
+    └── timestamps_windowfunctions.sql              #Challenge 11
+
+```  
+Author: Ricardo Gastl
 
 
 [url_learning_path]:https://www.linkedin.com/learning/paths/advance-your-skills-in-sql
