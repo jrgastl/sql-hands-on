@@ -1,9 +1,11 @@
 # SQL Hands-on Challenges  
 
 ## Status  
+
 [Learning Path][url_learning_path] in Progress!
 
-## Welcome!  
+## Welcome  
+
 This is my repository to document the process of advancing my skills in SQL. It contains the queries I implemented to solve the challenges contained in the learning path [Advance Your Skills in SQL][url_learning_path] in LinkedIn. In this README you can find the list of challenges with a brief description and the folder structure for the repository. If you want give any suggestions, comments or just have a conversation about it or any topic, please, approach me in [LinkedIn][url_profile] or by [e-mail][email].  
 
 ## List of Challenges
@@ -26,9 +28,18 @@ Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_
 |10|runningtotals_windowfunctions.sql|Calculate running totals using window functions|window functions|
 |11|timestamps_windowfunctions.sql|Calculate duration between instances with window functions|window functions, LEAD function|  
 
-# Folder Structure
+### 2. Using SQL with Python  
 
-```
+Challenges from the course [Using SQL with Python][url_sql_python]  
+
+|Challenge|File|Description|Brief summary of skills learned|
+|-|-|-|-|
+|12|copy-rows-mysql-sqlite.py|Copying rows from MySQL table to SQLite table|mysql-connector-python, mysql statements in python|  
+|12 extra|copy-rows-sqlite-mysql.py|Copying rows from SQLite table to MySQL table|mysql-connector-python, mysql statements in python|
+
+## Folder Structure  
+
+```plaintext
 sql-hands-on
 └── sql-business-problems
     ├── descriptive_statistics_cte.sql              #Challenge 1
@@ -44,10 +55,11 @@ sql-hands-on
     └── timestamps_windowfunctions.sql              #Challenge 11
 
 ```  
-Author: Ricardo Gastl
 
+Author: Ricardo Gastl
 
 [url_learning_path]:https://www.linkedin.com/learning/paths/advance-your-skills-in-sql
 [email]:mailto:jrgastl@gmail.com
 [url_profile]:https://www.linkedin.com/in/ricardogastl/
 [url_sql_business_problems]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
+[url_sql_python]:https://www.linkedin.com/learning/using-sql-with-python/use-sql-with-python
