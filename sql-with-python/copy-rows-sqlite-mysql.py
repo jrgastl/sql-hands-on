@@ -88,6 +88,7 @@ def main():
     # Adding rows to SQLite
     try:
         cur_lite.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_lite)
+        db_lite.commit()
         cur_lite.execute("SELECT * FROM gpulist")
         for row in cur_lite:
             print(row)
@@ -102,6 +103,7 @@ def main():
             values_msql.append(row)
         values_msql = tuple(values_msql)
         cur_msql.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_msql)
+        db_msql.commit()
         cur_msql.execute("SELECT * FROM gpulist")
         for row in cur_msql:
             print(row)

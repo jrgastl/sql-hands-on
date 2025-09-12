@@ -1,5 +1,5 @@
 # Author Notes: Had to rework the code after checking the solution so the data types for MySQL and SQLite are correct.
-# The instructor did the extra part of the challenge in a much more elaborated way that I will  not attempt for the moment. 
+# The instructor did the extra part of the challenge in a more elaborated way that I will  not attempt for the moment. 
 # 
 # Challenge 12: Copying a rows from MySQL to SQLite
 # 
@@ -91,14 +91,14 @@ def main():
     # Adding rows to MySQL table
     try:
         cur_msql.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_msql)
+        db_msql.commit()
         cur_msql.execute("SELECT * FROM gpulist")
         for row in cur_msql:
             print(row)
         print("Rows were sucessfully added to MySQL table")
     except mysql.Error as err:
         print(f'Rows were not added to MySQL table: {err}')
-    
-    #db_msql.commit() # Used to check the table in the MySQL workbench
+
 
     # Copying data from MySQL table to SQLite table
     try:
@@ -107,6 +107,7 @@ def main():
             values_lite.append(row)
         values_lite = tuple(values_lite)
         cur_lite.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_lite)
+        db_lite.commit()
         cur_lite.execute("SELECT * FROM gpulist")
         for row in cur_lite:
             print(row)
@@ -114,7 +115,7 @@ def main():
     except sqlite3.Error as err:
         print(f'Rows could not be copied: {err}')
 
-    # db_lite.commit() # Used to check the table with sqlite3 in WSL
+
     
     # Drop the tables and close the connections
     cur_msql.execute("DROP TABLE IF EXISTS gpulist")
