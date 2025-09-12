@@ -53,6 +53,9 @@ sql-hands-on
     ├── comparing_rows_selfjoin.sql                 #Challenge 9
     ├── runningtotals_windowfunctions.sql           #Challenge 10
     └── timestamps_windowfunctions.sql              #Challenge 11
+└── sql-with-python
+    ├── copy-rows-mysql-sqlite.py                   #Challenge 12
+    ├── copy-rows-sqlite-mysql.py                   #Challenge 12 extra
 
 ```  
 

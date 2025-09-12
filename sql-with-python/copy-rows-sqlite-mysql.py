@@ -13,7 +13,7 @@ import sqlite3
 
 def main():
 
-    # Creating the connection variables
+    # Creating the connection variables for MySQL
     my_host="localhost"
     my_user="dbuser"
     my_pass="Secret"
@@ -24,13 +24,22 @@ def main():
     db_lite = None
     cur_lite = None 
 
-    # Storing CREATE statement in a variable
-    sql_create = '''
+    # Storing CREATE statement in variables
+    lite_create = '''
     CREATE TABLE IF NOT EXISTS gpulist (
         id INTEGER PRIMARY KEY,
         model TEXT,
         memory INTEGER,
         vendor TEXT
+        )        
+    '''
+
+    msql_create = '''
+    CREATE TABLE IF NOT EXISTS gpulist (
+        id INT PRIMARY KEY,
+        model VARCHAR(16),
+        memory INT,
+        vendor VARCHAR(16)
         )        
     '''
 
@@ -44,7 +53,7 @@ def main():
 
     # Connecting to MySQL server in localhost
     try:
-        db_msql = mysql.connect(host=my_host, user=my_user, password=my_pass, database='sql_python_db')
+        db_msql = mysql.connect(host=my_host, user=my_user, password=my_pass, database='gpudata')
         cur_msql = db_msql.cursor(prepared=True) # Enable the use of prepared SQL statements for security
         print("Connected to MySQL")
     except mysql.Error as err:
@@ -54,23 +63,23 @@ def main():
     # Creating MySQL table
     try:
         cur_msql.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the data base
-        cur_msql.execute(sql_create)
+        cur_msql.execute(msql_create)
         print(f'MySQL table was created')
     except mysql.Error as err:
         print(f"Could not create MySQL table: {err}")
 
     # Setting up SQLite
     try:
-        db_lite = sqlite3.connect(":memory:") # Creates SQLite instance in the memory
+        db_lite = sqlite3.connect("./db/gpudata.db") # Creates SQLite database
         cur_lite = db_lite.cursor()
-        print("SQL instance created")
+        print("SQL database created")
     except sqlite3.Error as err:
-        print(f"Could not open the data base: {err}")
+        print(f"Could not create SQLite data base: {err}")
         exit(1)
 
     # Creating SQLite table
     try:
-        cur_lite.execute(sql_create)
+        cur_lite.execute(lite_create)
         print('SQLite table created')
     except sqlite3.Error as err:
         print(f"Could not create SQLite table: {err}")
@@ -100,7 +109,7 @@ def main():
     except sqlite3.Error as err:
         print(f'Rows could not be copied to MySQL table: {err}')
 
-    db_msql.commit() # Used to check the table in the MySQL workbench
+    # db_msql.commit() # Used to check the table in the MySQL workbench
     
     # Drop the tables and close the connections
     cur_msql.execute("DROP TABLE IF EXISTS gpulist")
