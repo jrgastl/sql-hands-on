@@ -26,30 +26,47 @@ def main():
 
     # Storing CREATE statement in variables
     lite_create = '''
-    CREATE TABLE IF NOT EXISTS gpulist (
-        id INTEGER PRIMARY KEY,
-        model TEXT,
-        memory INTEGER,
-        vendor TEXT
-        )        
-    '''
+        CREATE TABLE IF NOT EXISTS gpulist (
+            id INTEGER PRIMARY KEY,
+            model TEXT,
+            memory INTEGER,
+            vendor TEXT
+            )        
+        '''
 
     msql_create = '''
-    CREATE TABLE IF NOT EXISTS gpulist (
-        id INT PRIMARY KEY,
-        model VARCHAR(16),
-        memory INT,
-        vendor VARCHAR(16)
-        )        
-    '''
+        CREATE TABLE IF NOT EXISTS gpulist (
+            id SERIAL PRIMARY KEY,
+            model VARCHAR(16),
+            memory INT,
+            vendor VARCHAR(16)
+            )        
+        '''
 
     # Storing rows in variables
     values_lite = (
-        (1, 'RTX 5090', 32, 'Nvidia'),
-        (2, 'RX 9070 XT', 16, 'AMD'),
-        (3, 'B580', 12, 'Intel'),
+        ('RTX 5090', 32, 'Nvidia'),
+        ('RX 9070 XT', 16, 'AMD'),
+        ('B580', 12, 'Intel'),
                  )
-    values_msql = [] # Will be later used as a buffer and converted to tuple as part of the copying process
+
+    # Setting up SQLite
+    try:
+        db_lite = sqlite3.connect("./db/gpudata.db") # Creates SQLite database
+        cur_lite = db_lite.cursor()
+        print("SQLite database created")
+    except sqlite3.Error as err:
+        print(f"Could not create SQLite database: {err}")
+        exit(1)
+
+    # Creating SQLite table
+    try:
+        cur_lite.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the database
+        cur_lite.execute(lite_create)
+        print('SQLite table created')
+    except sqlite3.Error as err:
+        print(f"Could not create SQLite table: {err}")
+        exit(1)
 
     # Connecting to MySQL server in localhost
     try:
@@ -62,32 +79,16 @@ def main():
 
     # Creating MySQL table
     try:
-        cur_msql.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the data base
+        cur_msql.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the database
         cur_msql.execute(msql_create)
         print(f'MySQL table was created')
     except mysql.Error as err:
         print(f"Could not create MySQL table: {err}")
 
-    # Setting up SQLite
-    try:
-        db_lite = sqlite3.connect("./db/gpudata.db") # Creates SQLite database
-        cur_lite = db_lite.cursor()
-        print("SQL database created")
-    except sqlite3.Error as err:
-        print(f"Could not create SQLite data base: {err}")
-        exit(1)
-
-    # Creating SQLite table
-    try:
-        cur_lite.execute(lite_create)
-        print('SQLite table created')
-    except sqlite3.Error as err:
-        print(f"Could not create SQLite table: {err}")
-        exit(1)
 
     # Adding rows to SQLite
     try:
-        cur_lite.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_lite)
+        cur_lite.executemany("INSERT INTO gpulist (model, memory, vendor) VALUES (?, ?, ?)", values_lite)
         db_lite.commit()
         cur_lite.execute("SELECT * FROM gpulist")
         for row in cur_lite:
@@ -98,11 +99,9 @@ def main():
 
     # Copying data from SQLite table to MySQL table
     try:
-        cur_lite.execute("SELECT * FROM gpulist") # Aware that this statemente could have been called only one time, but keeping like this for clarity reasons.
+        cur_lite.execute("SELECT * FROM gpulist")
         for row in cur_lite:
-            values_msql.append(row)
-        values_msql = tuple(values_msql)
-        cur_msql.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_msql)
+            cur_msql.execute("INSERT INTO gpulist (model, memory, vendor) VALUES(?, ?, ?)", (row[1:]))
         db_msql.commit()
         cur_msql.execute("SELECT * FROM gpulist")
         for row in cur_msql:

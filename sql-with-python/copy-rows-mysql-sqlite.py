@@ -1,7 +1,6 @@
 # Author Notes: Had to rework the code after checking the solution so the data types for MySQL and SQLite are correct.
-# The instructor did the extra part of the challenge in a more elaborated way that I will  not attempt for the moment. 
 # 
-# Challenge 12: Copying a rows from MySQL to SQLite
+# Challenge 12: Copying rows from MySQL to SQLite
 # 
 # Connect to both MySQL and SQLite
 # Create a table on both system
@@ -27,45 +26,44 @@ def main():
     db_lite = None
     cur_lite = None 
 
-    # Storing CREATE statement in variables
-    lite_create = '''
-    CREATE TABLE IF NOT EXISTS gpulist (
-        id INTEGER PRIMARY KEY,
-        model TEXT,
-        memory INTEGER,
-        vendor TEXT
-        )        
-    '''
-
+    # Storing CREATE statement in variables with the proper data types
     msql_create = '''
-    CREATE TABLE IF NOT EXISTS gpulist (
-        id INT PRIMARY KEY,
-        model VARCHAR(16),
-        memory INT,
-        vendor VARCHAR(16)
-        )        
-    '''
+        CREATE TABLE IF NOT EXISTS gpulist (
+            id SERIAL PRIMARY KEY,
+            model VARCHAR(16),
+            memory INT,
+            vendor VARCHAR(16)
+            )        
+        '''
+    
+    lite_create = '''
+        CREATE TABLE IF NOT EXISTS gpulist (
+            id INTEGER PRIMARY KEY,
+            model TEXT,
+            memory INTEGER,
+            vendor TEXT
+            )        
+        '''
 
     # Storing rows in variables
     values_msql = (
-        (1, 'RTX 5090', 32, 'Nvidia'),
-        (2, 'RX 9070 XT', 16, 'AMD'),
-        (3, 'B580', 12, 'Intel'),
+        ('RTX 5090', 32, 'Nvidia'),
+        ('RX 9070 XT', 16, 'AMD'),
+        ('B580', 12, 'Intel'),
                  )
-    values_lite = [] # Will be later used as a buffer and converted to tuple as part of the copying process
 
     # Connecting to MySQL server in localhost
     try:
         db_msql = mysql.connect(host=my_host, user=my_user, password=my_pass, database='gpudata')
         cur_msql = db_msql.cursor(prepared=True) # Enable the use of prepared SQL statements for security
-        print("Connected to MySQL")
+        print("Connected to MySQL database")
     except mysql.Error as err:
-        print(f"Could not connect to the MySQL data base: {err}")
+        print(f"Could not connect to the MySQL database: {err}")
         exit(1)
 
     # Creating MySQL table
     try:
-        cur_msql.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the data base
+        cur_msql.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the database
         cur_msql.execute(msql_create)
         print(f'MySQL table was created')
     except mysql.Error as err:
@@ -75,13 +73,14 @@ def main():
     try:
         db_lite = sqlite3.connect("./db/gpudata.db") # Creates SQLite database
         cur_lite = db_lite.cursor()
-        print("SQL database created")
+        print("SQLite database created")
     except sqlite3.Error as err:
-        print(f"Could not create SQLite data base: {err}")
+        print(f"Could not create SQLite database: {err}")
         exit(1)
 
     # Creating SQLite table
     try:
+        cur_lite.execute("DROP TABLE IF EXISTS gpulist") # Drop the table in case it already exists in the database
         cur_lite.execute(lite_create)
         print('SQLite table created')
     except sqlite3.Error as err:
@@ -90,7 +89,7 @@ def main():
 
     # Adding rows to MySQL table
     try:
-        cur_msql.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_msql)
+        cur_msql.executemany("INSERT INTO gpulist (model, memory, vendor) VALUES (?, ?, ?)", values_msql)
         db_msql.commit()
         cur_msql.execute("SELECT * FROM gpulist")
         for row in cur_msql:
@@ -99,14 +98,11 @@ def main():
     except mysql.Error as err:
         print(f'Rows were not added to MySQL table: {err}')
 
-
     # Copying data from MySQL table to SQLite table
     try:
-        cur_msql.execute("SELECT * FROM gpulist") # Aware that this statemente could have been called only one time, but keeping like this for clarity reasons.
+        cur_msql.execute("SELECT * FROM gpulist")
         for row in cur_msql:
-            values_lite.append(row)
-        values_lite = tuple(values_lite)
-        cur_lite.executemany("INSERT INTO gpulist VALUES(?, ?, ?, ?)", values_lite)
+            cur_lite.execute("INSERT INTO gpulist (model, memory, vendor) VALUES(?, ?, ?)", (row[1:]))
         db_lite.commit()
         cur_lite.execute("SELECT * FROM gpulist")
         for row in cur_lite:
@@ -114,8 +110,6 @@ def main():
         print('Rows were sucessfully copied to SQLite table')
     except sqlite3.Error as err:
         print(f'Rows could not be copied: {err}')
-
-
     
     # Drop the tables and close the connections
     cur_msql.execute("DROP TABLE IF EXISTS gpulist")
