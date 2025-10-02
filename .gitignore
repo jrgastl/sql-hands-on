@@ -1,0 +1,34 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+#  Virtual environments
+.venv/
+venv/
+env/
+
+# VS Code settings
+.vscode/
+
+# Log files
+*.log
+
+# Environment variables and secrets
+.env
+
+# SQL
+*.sql.gz
+*.dump
+*.bak
+*.backup
+*.sqlite3
+*.db
+*.mdf
+*.ldf
+*.sql.zip
+*.sql.tar.gz
+
+# Temporary
+*.tmp
+*.lock

@@ -71,7 +71,7 @@ def main():
 
     # Setting up SQLite
     try:
-        db_lite = sqlite3.connect("./db/gpudata.db") # Creates SQLite database
+        db_lite = sqlite3.connect("./data/gpudata.db") # Creates SQLite database
         cur_lite = db_lite.cursor()
         print("SQLite database created")
     except sqlite3.Error as err:

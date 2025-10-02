@@ -60,8 +60,7 @@ sql-hands-on
     ├── short-url-list.py                           #Challenge 13
     ├── library
         └── BWDB.py                                 #Instructor library
-    └── data
-        └── jurl.db                                 #SQLite database
+    └── data                                        #Folder for storing SQLite databases
 ```  
 
 Author: Ricardo Gastl
