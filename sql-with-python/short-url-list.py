@@ -92,13 +92,13 @@ def del_url():# delete an url from the database selection
 
 def clear_table():# delete the tables and exit selection
     confirm = input("Clear all data and quit? [Y or N] > ")
-    if confirm in 'Yy':
+    if confirm in 'Nn' or confirm == '':
+        to_menu('Operation canceled')
+    elif confirm in 'Yy':
         db = GLOBALS['db']
         db.sql_do("DROP TABLE IF EXISTS jurl")
         print("Data was cleared.")
         sys.exit(0)
-    elif confirm in 'Nn':
-        to_menu('Operation canceled')
     else:
         print(f"{confirm} is not a valid option.")
         clear_table()

@@ -16,14 +16,14 @@ Challenges from the course [SQL Hands-On Practice: Solve Business Problems][url_
   
 |Challenge|File|Description|Brief summary of skills learned|
 |-|-|-|-|
-|1|descriptive_statistics_cte.sql|Use CTE and aggregate functions to properly aggregate data|aggreagate fucntions combined with CTE|
-|2|variable_distributions_cte.sql|Use CTE and aggregate functions to get data distribution|aggreagate fucntions combined with CTE|
+|1|descriptive_statistics_cte.sql|Use CTE and aggregate functions to properly aggregate data|aggregate fucntions combined with CTE|
+|2|variable_distributions_cte.sql|Use CTE and aggregate functions to get data distribution|aggregate fucntions combined with CTE|
 |3|funnel_analysis_cte.sql|Use CTE, CASE expression and aggregate functions to do a payment funnel analysis|aggregate functions combine with CTE, CASE expression|
 |4|binary_columns_case.sql|Use CASE expression to flag relevant data in a binary form|CASE expression|
 |5|aggregated_columns_case.sql|Use CASE expression to pivot a table|CASE expression|
 |6|combine_tables_union.sql|Combine rows of multiple tables with UNION set operator|UNION operator|
-|7|unpivoting_columns_union.sql|Get the date of multiple columns in one column with UNION|UNION operator, CAST function|
-|8|hierarchy_data_selfjoin.sql|Join a table to itself in order to stablish hierarchical relashionships|JOIN operator|
+|7|unpivoting_columns_union.sql|Get the data of multiple columns in one column with UNION|UNION operator, CAST function|
+|8|hierarchy_data_selfjoin.sql|Join a table to itself in order to establish hierarchical relashionships|JOIN operator|
 |9|comparing_rows_selfjoin.sql|Join a table to itself to compare data|JOIN operator|
 |10|runningtotals_windowfunctions.sql|Calculate running totals using window functions|window functions|
 |11|timestamps_windowfunctions.sql|Calculate duration between instances with window functions|window functions, LEAD function|  
@@ -34,8 +34,9 @@ Challenges from the course [Using SQL with Python][url_sql_python]
 
 |Challenge|File|Description|Brief summary of skills learned|
 |-|-|-|-|
-|12|copy-rows-mysql-sqlite.py|Copying rows from MySQL table to SQLite table|mysql-connector-python, mysql statements in python|  
-|12 extra|copy-rows-sqlite-mysql.py|Copying rows from SQLite table to MySQL table|mysql-connector-python, mysql statements in python|
+|12|copy-rows-mysql-sqlite.py|Copying rows from MySQL table to SQLite table|mysql-connector-python, SQL statements in Python|  
+|12 extra|copy-rows-sqlite-mysql.py|Copying rows from SQLite table to MySQL table|mysql-connector-python, SQL statements in Python|
+|13|short-url-list.py|Script to manage a short URL database|CRUD operations with python SQL wrapper|
 
 ## Folder Structure  
 
@@ -56,7 +57,11 @@ sql-hands-on
 └── sql-with-python
     ├── copy-rows-mysql-sqlite.py                   #Challenge 12
     ├── copy-rows-sqlite-mysql.py                   #Challenge 12 extra
-
+    ├── short-url-list.py                           #Challenge 13
+    ├── library
+        └── BWDB.py                                 #Instructor library
+    └── data
+        └── jurl.db                                 #SQLite database
 ```  
 
 Author: Ricardo Gastl
