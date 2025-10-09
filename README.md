@@ -2,7 +2,7 @@
 
 ## Status  
 
-[Learning Path][url_learning_path] in Progress!
+[Learning Path][url_certificate] Completed!
 
 ## Welcome  
 
@@ -36,7 +36,21 @@ Challenges from the course [Using SQL with Python][url_sql_python]
 |-|-|-|-|
 |12|copy-rows-mysql-sqlite.py|Copying rows from MySQL table to SQLite table|mysql-connector-python, SQL statements in Python|  
 |12 extra|copy-rows-sqlite-mysql.py|Copying rows from SQLite table to MySQL table|mysql-connector-python, SQL statements in Python|
-|13|short-url-list.py|Script to manage a short URL database|CRUD operations with python SQL wrapper|
+|13|short-url-list.py|Script to manage a short URL database|CRUD operations with python SQL wrapper|  
+
+### 3. Hands-On SQL Challenges: Test Your Knowledge  
+
+Challenges from the course [Hands-On SQL Challenges: Test Your Knowledge][url_hands_on]  
+
+Not all the challenges were added to this repository, I just kept the most relevant ones. They are also not in the same order of the course.  
+
+|Challenge|File|Description|Brief summary of skills learned|
+|-|-|-|-|
+|14|create-table.sql|Creating a table|CREATE statement|  
+|15|insert-customer-data.sql|Inserting data into the table|INSERT statement|
+|16|update-customer-data.sql|Updating data in the table|UPDATE statement|
+|17|remove-data.sql|Removing data from the table|DELETE statement|
+|18|rank-data.sql|Ranking a column from the table|RANK() and window functions|  
 
 ## Folder Structure  
 
@@ -61,6 +75,12 @@ sql-hands-on
     ├── library
         └── BWDB.py                                 #Instructor library
     └── data                                        #Folder for storing SQLite databases
+└── sql-hands-on-challenges
+    ├── create-table.sql                            #Challenge 14
+    ├── insert-consumer-data.sql                    #Challenge 15
+    ├── update-cusotmer-data.sql                    #Challenge 16
+    ├── remove-data.sql                             #Challenge 17
+    └── rank-data.sql                               #Challenge 18
 ```  
 
 Author: Ricardo Gastl
@@ -70,3 +90,5 @@ Author: Ricardo Gastl
 [url_profile]:https://www.linkedin.com/in/ricardogastl/
 [url_sql_business_problems]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
 [url_sql_python]:https://www.linkedin.com/learning/using-sql-with-python/use-sql-with-python
+[url_hands_on]:https://www.linkedin.com/learning/hands-on-sql-challenges-test-your-knowledge
+[url_certificate]:https://www.linkedin.com/learning/certificates/fd68efdd2bdb0fe81c1e72bb0785509aa5cf05a88c77590ecf84383f8e81d827?u=273300426
