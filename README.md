@@ -6,7 +6,7 @@
 
 ## Welcome  
 
-This is my repository to document the process of advancing my skills in SQL. It contains the queries I implemented to solve the challenges contained in the learning path [Advance Your Skills in SQL][url_learning_path] in LinkedIn. In this README you can find the list of challenges with a brief description and the folder structure for the repository. If you want give any suggestions, comments or just have a conversation about it or any topic, please, approach me in [LinkedIn][url_profile] or by [e-mail][email].  
+This is my repository to document the process of advancing my skills in SQL. It contains the queries I implemented to solve the challenges contained in the learning path [Advance Your Skills in SQL][url_learning_path] in LinkedIn. In this README you can find the list of challenges with a brief description and the folder structure for the repository. If you want give any suggestions, comments or just have a conversation about it or any topic, please, approach me in [LinkedIn][url_profile].  
 
 ## List of Challenges
 
@@ -86,7 +86,6 @@ sql-hands-on
 Author: Ricardo Gastl
 
 [url_learning_path]:https://www.linkedin.com/learning/paths/advance-your-skills-in-sql
-[email]:mailto:jrgastl@gmail.com
 [url_profile]:https://www.linkedin.com/in/ricardogastl/
 [url_sql_business_problems]:https://www.linkedin.com/learning/sql-hands-on-practice-solve-business-problems
 [url_sql_python]:https://www.linkedin.com/learning/using-sql-with-python/use-sql-with-python
